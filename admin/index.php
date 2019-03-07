@@ -16,7 +16,8 @@ $resultado = mysqli_query ($conexion,$consulta);
 	</head>
 	<body>
 	<h1><?php echo $titulo_pagina; ?> - Administrador</h1>
-	
+	<!-- INCLUIMOS EL MENÚ-->
+	<?php include_once("includes/menu.php"); ?>
 	<table>
 	<tbody>
 	<tr>

@@ -16,7 +16,6 @@ while ($row = mysqli_fetch_assoc($resultado)){
 	$precio = $row['precio'];
 	$fecha = $row['fecha_lanzamiento']; 
 }
-echo $clave;
  ?>
 <!DOCTYPE html>
 <html>
@@ -26,8 +25,8 @@ echo $clave;
 	</head>
 	<body>
 	<h1><?php echo $titulo_pagina; ?></h1>
-	
-	<form action="includes/insertar-producto.php" method="POST">
+	<!--MANDAMOS LA INFORMACIÓN DEL FORMULARIO AL ARCHIVO DE ACUTUALIZAR PRODUCTO -->
+	<form action="includes/actualizar-producto.php" method="POST">
 	
 	<label for="clave_de_producto">Clave del producto / SKU </label>
 	<input type="text" name="clave_producto" placeholder=" Clave del producto" value="<?php echo $clave; ?>"><br>
@@ -39,12 +38,13 @@ echo $clave;
 	<textarea name="descripcion" rows="8" col="40"><?php echo $descripcion; ?></textarea><br>
 	
 	<label for="precio">Precio</label>
-	<input type="text" name="precio" placeholder="Precio del producto"><br>
+	<input type="text" name="precio" placeholder="Precio del producto" value="<?php echo $precio; ?>"><br>
 	
 	<label for="fecha_lanzamiento">Fecha de lanzamiento</label>
-	<input type="text" name="fecha_lanzamiento" placeholder="Fecha de lanzamiento"><br>
-	
-	<input type="submit" value="Agregar Producto">
+	<input type="text" name="fecha_lanzamiento" placeholder="Fecha de lanzamiento" value="<?php echo $fecha; ?>"><br>
+	<!--MANDAMOS EL ID COMO CAMPO TIPO OCULTO -->
+	<input type="hidden" name="id" value="<?php echo $id; ?>">
+	<input type="submit" value="Actualizar Producto">
 	</form>
 	
 	</body>

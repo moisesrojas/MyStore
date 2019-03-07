@@ -33,10 +33,10 @@ echo $clave;
 	<input type="text" name="clave_producto" placeholder=" Clave del producto" value="<?php echo $clave; ?>"><br>
 	
 	<label for="nombre_producto">Nombre del producto </label>
-	<input type="text" name="nombre_producto" placeholder="Nombre del producto"><br>
+	<input type="text" name="nombre_producto" placeholder="Nombre del producto" value="<?php echo $nombre; ?>"><br>
 	
 	<label for="descripcion_producto">Descripción del producto </label>
-	<textarea name="descripcion" rows="8" col="40"></textarea><br>
+	<textarea name="descripcion" rows="8" col="40"><?php echo $descripcion; ?></textarea><br>
 	
 	<label for="precio">Precio</label>
 	<input type="text" name="precio" placeholder="Precio del producto"><br>

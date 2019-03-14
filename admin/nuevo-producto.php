@@ -28,7 +28,7 @@
 	<body>
 	<h1><?php echo $titulo_pagina; ?></h1>
 	
-	<form action="includes/insertar-producto.php" method="POST">
+	<form action="includes/insertar-producto.php" method="POST" enctype="multipart/form-data">
 	
 	<label for="clave_de_producto">Clave del producto / SKU </label>
 	<input type="text" name="clave_producto" placeholder=" Clave del producto"><br>
@@ -36,10 +36,15 @@
 	<label for="nombre_producto">Nombre del producto </label>
 	<input type="text" name="nombre_producto" placeholder="Nombre del producto"><br>
 	
+	
 	<label for="descripcion_producto">Descripción del producto </label>
 	<textarea id="descripcion" name="descripcion" rows="8" col="40"></textarea><br>
 	<!--EJECUTAMOS EL PLUGIN PARA MOSTRAR EL EDITOR WYSIWYG-->
 	<script>CKEDITOR.replace( 'descripcion' );</script>
+	
+	
+	<label for="portada">Portada</label>
+	<input type="file" name="portada" id="portada"><br>
 	
 	<label for="precio">Precio</label>
 	<input type="text" name="precio" placeholder="Precio del producto"><br>

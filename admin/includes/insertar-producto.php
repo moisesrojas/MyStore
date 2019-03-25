@@ -8,6 +8,8 @@ $nombre = $_POST['nombre_producto'];
 $descripcion = $_POST['descripcion'];
 $precio = $_POST['precio'];
 $fecha = $_POST['fecha_lanzamiento'];
+$categoria = $_POST['categoria'];
+
 
 //CAPTURAMOS LA INFORMACIÓN DEL ARCHIVO EN VARIABLES
 echo $nombre_archivo = $_FILES['portada']['name'];
@@ -68,6 +70,14 @@ $consulta_insertar = "INSERT INTO Productos (clave_producto, nombre_producto, de
 
 //EJECUTAMOS LA CONSULTA CON LA CONEXIÓN Y LA SENTENCIA SQL INSERT INTO
 mysqli_query($conexion, $consulta_insertar);
+
+//CAPTURAMOS EN UNA VARIABLE EL VALOR ID DEL PRODUCTO RECIÉN INGRESADO A LA BASE DE DATOS
+$id_nuevo_producto = mysqli_insert_id($conexion);
+
+//DECLARAMOS LA SENTENCIA PARA INSERTAR LA RELACIÓN ENTRE PRODUCTO Y CATEGORÍA
+$consulta_relacion_categoria = "INSERT INTO Relacion_Productos_Categorias (id_producto,id_categoria) VALUES ($id_nuevo_producto, $categoria)";
+//EJECUTAMOS LA CONSULTA QUE INGRESA LA RELACIÓN DEL PRODUCTO CON LA CATEGORÍA
+mysqli_query($conexion, $consulta_relacion_categoria);
 
 //REDIRECCIONAMOS AL ADMINISTRADOR AL INDEX DE ADMIN
 header('Location:../index.php');

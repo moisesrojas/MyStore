@@ -1,4 +1,9 @@
-<?php $titulo_pagina = "Nuevo Producto - Administrador"; ?>
+<?php $titulo_pagina = "Nuevo Producto - Administrador"; 
+include_once("includes/conexion.php");
+$consulta_categorias = "SELECT * FROM Categorias";
+$resultado = mysqli_query($conexion,$consulta_categorias);
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -51,6 +56,15 @@
 	
 	<label for="fecha_lanzamiento">Fecha de lanzamiento</label>
 	<input type="text" name="fecha_lanzamiento" id="fecha_lanzamiento" placeholder="Fecha de lanzamiento"><br>
+	
+	<select name="categoria" id="categoria" size="1">
+		<option> -- Selecciona una categoría</option>
+		<?php
+		while($row = mysqli_fetch_assoc($resultado)){
+			echo "<option value='" . $row['id_cat'] . "'>" . $row['nombre_categoria'] . "</option>";
+		}
+		?>
+	</select>
 	
 	<input type="submit" value="Agregar Producto">
 	</form>

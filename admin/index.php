@@ -26,6 +26,7 @@ $resultado = mysqli_query ($conexion,$consulta);
 	<th>Nombre</th>
 	<th>Precio</th>
 	<th>Fecha de lanzamiento</th>
+	<th>Imagen</th>
 	<th>ELIMINAR</th>
 	</tr>
 	
@@ -38,6 +39,7 @@ $resultado = mysqli_query ($conexion,$consulta);
 		echo "<td><a href='editar-producto.php?id=" . $row['id'] . "'>" . $row['nombre_producto'] . "</a></td>";
 		echo "<td>" . $row['precio'] . "</td>";
 		echo "<td>" . $row['fecha_lanzamiento'] . "</td>";
+		echo "<td><img src='img/portadas/thumbs/thumb_" . $row['imagen_producto'] . "'></td>";
 	echo "<td><a href='includes/eliminar-producto.php?id=" . $row['id'] . "'>Borrar</a></td>";
 		echo "</tr>";
 		}

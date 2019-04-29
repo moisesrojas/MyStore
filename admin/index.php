@@ -1,4 +1,8 @@
 <?php
+
+session_start();
+if(isset($_SESSION["usuario_admin"])){
+
 //INCLUIMOS EL ARCHIVO DE CONEXIÓN
 include_once("includes/conexion.php");
 $titulo_pagina = "My Store";
@@ -17,7 +21,11 @@ $resultado = mysqli_query ($conexion,$consulta);
 	<body>
 	<h1><?php echo $titulo_pagina; ?> - Administrador</h1>
 	<!-- INCLUIMOS EL MENÚ-->
-	<?php include_once("includes/menu.php"); ?>
+	<?php include_once("includes/menu.php"); 
+	echo "Bienvenido/Bienvenida " . $_SESSION["usuario_admin"];
+	echo "<a href='includes/logout.php'>Cerrar Sesión</a>";
+	?>
+	 	
 	<table>
 	<tbody>
 	<tr>
@@ -50,3 +58,9 @@ $resultado = mysqli_query ($conexion,$consulta);
 		
 	</body>
 </html>
+
+<?php
+} else {	
+	header("Location:login-admin.php");
+} 
+?>
